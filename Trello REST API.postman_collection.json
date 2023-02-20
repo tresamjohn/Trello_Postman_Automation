@@ -1,0 +1,1387 @@
+{
+	"info": {
+		"_postman_id": "ca9a1eb5-dcab-48d1-96da-5afd527d6c3f",
+		"name": "Trello REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TestCases",
+			"item": [
+				{
+					"name": "TC_01_Create a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"board_id\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/boards//?name={{boardName}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"boards",
+								"",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{boardName}}",
+									"description": "The new name for the board. 1 to 16384 characters long."
+								},
+								{
+									"key": "defaultLabels",
+									"value": "{{defaultLabels}}",
+									"description": "Determines whether to use the default set of labels.",
+									"disabled": true
+								},
+								{
+									"key": "defaultLists",
+									"value": "{{defaultLists}}",
+									"description": "Determines whether to add the default set of lists to a board (To Do, Doing, Done). It is ignored if `idBoardSource` is provided.",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "A new description for the board, 0 to 16384 characters long",
+									"disabled": true
+								},
+								{
+									"key": "idOrganization",
+									"value": "{{idOrganization}}",
+									"description": "The id or name of the Workspace the board should belong to.",
+									"disabled": true
+								},
+								{
+									"key": "idBoardSource",
+									"value": "{{idBoardSource}}",
+									"description": "The id of a board to copy into the new board.",
+									"disabled": true
+								},
+								{
+									"key": "keepFromSource",
+									"value": "{{keepFromSource}}",
+									"description": "To keep cards from the original board pass in the value `cards`",
+									"disabled": true
+								},
+								{
+									"key": "powerUps",
+									"value": "{{powerUps}}",
+									"description": "The Power-Ups that should be enabled on the new board. One of: `all`, `calendar`, `cardAging`, `recap`, `voting`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_permissionLevel",
+									"value": "{{prefs_permissionLevel}}",
+									"description": "The permissions level of the board. One of: `org`, `private`, `public`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_voting",
+									"value": "{{prefs_voting}}",
+									"description": "Who can vote on this board. One of `disabled`, `members`, `observers`, `org`, `public`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_comments",
+									"value": "{{prefs_comments}}",
+									"description": "Who can comment on cards on this board. One of: `disabled`, `members`, `observers`, `org`, `public`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_invitations",
+									"value": "{{prefs_invitations}}",
+									"description": "Determines what types of members can invite users to join. One of: `admins`, `members`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_selfJoin",
+									"value": "{{prefs_selfJoin}}",
+									"description": "Determines whether users can join the boards themselves or whether they have to be invited.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_cardCovers",
+									"value": "{{prefs_cardCovers}}",
+									"description": "Determines whether card covers are enabled.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_background",
+									"value": "{{prefs_background}}",
+									"description": "The id of a custom background or one of: `blue`, `orange`, `green`, `red`, `purple`, `pink`, `lime`, `sky`, `grey`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_cardAging",
+									"value": "{{prefs_cardAging}}",
+									"description": "Determines the type of card aging that should take place on the board if card aging is enabled. One of: `pirate`, `regular`.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a new board."
+					},
+					"response": []
+				},
+				{
+					"name": "TC_02_Get Lists on a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);   \r",
+									"pm.environment.set(\"idList\", data[0].id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"board_id\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/boards/:id/lists",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"boards",
+								":id",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "cards",
+									"value": "{{cards}}",
+									"description": "Filter to apply to Cards.",
+									"disabled": true
+								},
+								{
+									"key": "card_fields",
+									"value": "{{card_fields}}",
+									"description": "`all` or a comma-separated list of card [fields](/cloud/trello/guides/rest-api/object-definitions/#card-object)",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "{{filter}}",
+									"description": "Filter to apply to Lists",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "{{fields}}",
+									"description": "`all` or a comma-separated list of list [fields](/cloud/trello/guides/rest-api/object-definitions/)",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{board_id}}"
+								}
+							]
+						},
+						"description": "Get the Lists on a Board"
+					},
+					"response": []
+				},
+				{
+					"name": "TC_03_CreateCard_01",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"idList\");\r",
+									"pm.environment.get(\"board_id\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"card_id_01\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cards?name={{card_name_01}}&idList={{idList}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cards"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{card_name_01}}",
+									"description": "The name for the card"
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "The description for the card",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the new card. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "A due date for the card",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be created in"
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "urlSource",
+									"value": "{{urlSource}}",
+									"description": "A URL starting with `http://` or `https://`",
+									"disabled": true
+								},
+								{
+									"key": "fileSource",
+									"value": "{{fileSource}}",
+									"disabled": true
+								},
+								{
+									"key": "mimeType",
+									"value": "{{mimeType}}",
+									"description": "The mimeType of the attachment. Max length 256",
+									"disabled": true
+								},
+								{
+									"key": "idCardSource",
+									"value": "{{idCardSource}}",
+									"description": "The ID of a card to copy into the new card",
+									"disabled": true
+								},
+								{
+									"key": "keepFromSource",
+									"value": "{{keepFromSource}}",
+									"description": "If using `idCardSource` you can specify which properties to copy over. `all` or comma-separated list of: `attachments,checklists,customFields,comments,due,start,labels,members,start,stickers`",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should take the form latitude,longitude",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a new card"
+					},
+					"response": []
+				},
+				{
+					"name": "TC_04_CreateCard_02",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"idList\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"card_id_02\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cards?name={{card_name_02}}&idList={{idList}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cards"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{card_name_02}}",
+									"description": "The name for the card"
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "The description for the card",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the new card. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "A due date for the card",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be created in"
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "urlSource",
+									"value": "{{urlSource}}",
+									"description": "A URL starting with `http://` or `https://`",
+									"disabled": true
+								},
+								{
+									"key": "fileSource",
+									"value": "{{fileSource}}",
+									"disabled": true
+								},
+								{
+									"key": "mimeType",
+									"value": "{{mimeType}}",
+									"description": "The mimeType of the attachment. Max length 256",
+									"disabled": true
+								},
+								{
+									"key": "idCardSource",
+									"value": "{{idCardSource}}",
+									"description": "The ID of a card to copy into the new card",
+									"disabled": true
+								},
+								{
+									"key": "keepFromSource",
+									"value": "{{keepFromSource}}",
+									"description": "If using `idCardSource` you can specify which properties to copy over. `all` or comma-separated list of: `attachments,checklists,customFields,comments,due,start,labels,members,start,stickers`",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should take the form latitude,longitude",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a new card"
+					},
+					"response": []
+				},
+				{
+					"name": "TC_05_CreateCard_03",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"idList\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"card_id_03\", jsonData.id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cards?name={{card_name_03}}&idList={{idList}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cards"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{card_name_03}}",
+									"description": "The name for the card"
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "The description for the card",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the new card. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "A due date for the card",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be created in"
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "urlSource",
+									"value": "{{urlSource}}",
+									"description": "A URL starting with `http://` or `https://`",
+									"disabled": true
+								},
+								{
+									"key": "fileSource",
+									"value": "{{fileSource}}",
+									"disabled": true
+								},
+								{
+									"key": "mimeType",
+									"value": "{{mimeType}}",
+									"description": "The mimeType of the attachment. Max length 256",
+									"disabled": true
+								},
+								{
+									"key": "idCardSource",
+									"value": "{{idCardSource}}",
+									"description": "The ID of a card to copy into the new card",
+									"disabled": true
+								},
+								{
+									"key": "keepFromSource",
+									"value": "{{keepFromSource}}",
+									"description": "If using `idCardSource` you can specify which properties to copy over. `all` or comma-separated list of: `attachments,checklists,customFields,comments,due,start,labels,members,start,stickers`",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should take the form latitude,longitude",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a new card"
+					},
+					"response": []
+				},
+				{
+					"name": "TC_06_Edit & Update a Card",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.get(\"card_id_01\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cards/:id?name={{card_name_01_Updated}}&desc={{card_desc}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cards",
+								":id"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{card_name_01_Updated}}",
+									"description": "The new name for the card"
+								},
+								{
+									"key": "desc",
+									"value": "{{card_desc}}",
+									"description": "The new description for the card"
+								},
+								{
+									"key": "closed",
+									"value": "{{closed}}",
+									"description": "Whether the card should be archived (closed: true)",
+									"disabled": true
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs",
+									"disabled": true
+								},
+								{
+									"key": "idAttachmentCover",
+									"value": "{{idAttachmentCover}}",
+									"description": "The ID of the image attachment the card should use as its cover, or null for none",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be in",
+									"disabled": true
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs",
+									"disabled": true
+								},
+								{
+									"key": "idBoard",
+									"value": "{{idBoard}}",
+									"description": "The ID of the board the card should be on",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the card in its list. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "When the card is due, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"description": "Whether the due date should be marked complete",
+									"disabled": true
+								},
+								{
+									"key": "subscribed",
+									"value": "{{subscribed}}",
+									"description": "Whether the member is should be subscribed to the card",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should be latitude,longitude",
+									"disabled": true
+								},
+								{
+									"key": "cover",
+									"value": "{{cover}}",
+									"description": "Updates the card's cover\n | Option | Values | About |\n |--------|--------|-------|\n | color | `pink`, `yellow`, `lime`, `blue`, `black`, `orange`, `red`, `purple`, `sky`, `green` | Makes the cover a solid color . |\n | brightness | `dark`, `light` | Determines whether the text on the cover should be dark or light.\n | url | An unsplash URL: https://images.unsplash.com | Used if making an image the cover. Only Unsplash URLs work.\n | idAttachment | ID of an attachment on the card | Used if setting an attached image as the cover. |\n | size | `normal`, `full` | Determines whether to show the card name on the cover, or below it. |\n \n `brightness` can be sent alongside any of the other parameters, but all of the other parameters are mutually exclusive; you can not have the cover be a `color` and an `idAttachment` at the same time. \n \n On the brightness options, setting it to light will make the text on the card cover dark:\n ![](/cloud/trello/images/rest/cards/cover-brightness-dark.png)\n \n And vice versa, setting it to dark will make the text on the card cover light: \n ![](/cloud/trello/images/rest/cards/cover-brightness-light.png) ",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{card_id_01}}"
+								}
+							]
+						},
+						"description": "Update a card"
+					},
+					"response": []
+				},
+				{
+					"name": "TC_07_Delete One Card",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.environment.get(\"card_id_03\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cards/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cards",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{card_id_03}}"
+								}
+							]
+						},
+						"description": "Delete a Card"
+					},
+					"response": []
+				},
+				{
+					"name": "TC_08_Add a new comment to a Card",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.environment.get(\"card_id_02\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth1",
+							"oauth1": [
+								{
+									"key": "signatureMethod",
+									"value": "HMAC-SHA1",
+									"type": "string"
+								},
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerKey",
+									"value": "{{consumer_key}}",
+									"type": "string"
+								},
+								{
+									"key": "consumerSecret",
+									"value": "{{consumer_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenSecret",
+									"value": "{{token_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "timestamp",
+									"value": 1499860097,
+									"type": "number"
+								},
+								{
+									"key": "nonce",
+									"value": "OOVu6c",
+									"type": "string"
+								},
+								{
+									"key": "version",
+									"value": "1.0A",
+									"type": "string"
+								},
+								{
+									"key": "realm",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addParamsToHeader",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "addEmptyParamsToSign",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/cards/:id/actions/comments?text={{card_comment}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cards",
+								":id",
+								"actions",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "{{card_comment}}",
+									"description": "The comment"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{card_id_02}}",
+									"description": "The ID of the Card"
+								}
+							]
+						},
+						"description": "Add a new comment to a card"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "protocol",
+			"value": "https",
+			"type": "string",
+			"description": "The HTTP Protocol that should be used for this REST API."
+		},
+		{
+			"key": "host",
+			"value": "api.trello.com",
+			"type": "string",
+			"description": "The HTTP host that should be used for this REST API."
+		},
+		{
+			"key": "basePath",
+			"value": "1/",
+			"type": "string",
+			"description": "The path, after the host, of the base of the REST API."
+		}
+	]
+}

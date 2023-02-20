@@ -1,0 +1,194 @@
+{
+	"id": "db0d5358-9d77-4fa3-b5b5-3e25b1c24ad2",
+	"name": "Trello REST API",
+	"timestamp": "2023-02-20T04:15:04.564Z",
+	"collection_id": "0-ca9a1eb5-dcab-48d1-96da-5afd527d6c3f",
+	"folder_id": 0,
+	"environment_id": "235b214d-61ea-42bd-a4eb-761e4d9f927c",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "4bcc7a28-56dc-4979-b241-704781021ed0",
+			"name": "TC_01_Create a Board",
+			"url": "https://api.trello.com/1/boards//?name=QA%20Board&oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=zjGaPT9QF%2Bqb8G8F7LTndPjNUTQ%3D",
+			"time": 320,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				320
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "aa84a76f-6776-468e-ad5d-6912d404676e",
+			"name": "TC_02_Get Lists on a Board",
+			"url": "https://api.trello.com/1/boards/63f2f3cb249457eee6badac1/lists?oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=cSE0LLvJMivBmeNwfm4Ka8sI%2BQ8%3D",
+			"time": 137,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				137
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "40a18caf-c076-4f60-9ca1-bbc0af61b529",
+			"name": "TC_03_CreateCard_01",
+			"url": "https://api.trello.com/1/cards?name=TestCase_01&idList=63f2f3cb249457eee6badac8&oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=ggF%2BAX81hYaKjPf0XHONgWRkdtg%3D",
+			"time": 318,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				318
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bd3a74a8-7ccc-49ed-af3a-f33bcdc9ff26",
+			"name": "TC_04_CreateCard_02",
+			"url": "https://api.trello.com/1/cards?name=TestCase_02&idList=63f2f3cb249457eee6badac8&oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=mTu8%2FfU14h%2FTunuPjEeXLW49gNg%3D",
+			"time": 374,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				374
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "af05a17d-4374-41ef-9dc5-79a9fde73107",
+			"name": "TC_05_CreateCard_03",
+			"url": "https://api.trello.com/1/cards?name=TestCase_03&idList=63f2f3cb249457eee6badac8&oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=o%2BfURyDq64LOnpP6Iru5blR85lg%3D",
+			"time": 286,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				286
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "810f1c05-0bb8-4b9b-8d43-e868b3102a42",
+			"name": "TC_06_Edit & Update a Card",
+			"url": "https://api.trello.com/1/cards/63f2f3cc261f955fb00af1c4?name=TestCase_01_Updated&desc=This%20is%20an%20updated%20Card%20in%20QA%20Board&oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=BOT98qJkUQdzleSyWgo9SJo%2BWts%3D",
+			"time": 402,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				402
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2113e340-836a-4d28-a1c8-e68e02dd6d83",
+			"name": "TC_07_Delete One Card",
+			"url": "https://api.trello.com/1/cards/63f2f3cdf558c547c476c253?oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=BD0i9tMaNvy5U7GBFv14%2FkLdxJ8%3D",
+			"time": 544,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				544
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f8a8367c-f155-4c4c-94c2-028ec1741769",
+			"name": "TC_08_Add a new comment to a Card",
+			"url": "https://api.trello.com/1/cards/63f2f3ccc91906fa1314b22a/actions/comments?text=This%20is%20an%20updated%20test%20comment%20for%20the%20card%20on%20QA%20Board&oauth_consumer_key=70dd94ee0755c140f5bbb762b5c5ba9c&oauth_token=ATTA1c62f1e95862f7ca5e01b5a192acf885890f7a4ec9aacc5fb2c1477ee59b4efbA1192844&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1499860097&oauth_nonce=OOVu6c&oauth_version=1.0A&oauth_signature=pYwy6kddiFssyGtoVYkvZLvGmac%3D",
+			"time": 219,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				219
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2600,
+	"collection": {
+		"requests": [
+			{
+				"id": "4bcc7a28-56dc-4979-b241-704781021ed0",
+				"method": "POST"
+			},
+			{
+				"id": "aa84a76f-6776-468e-ad5d-6912d404676e",
+				"method": "GET"
+			},
+			{
+				"id": "40a18caf-c076-4f60-9ca1-bbc0af61b529",
+				"method": "POST"
+			},
+			{
+				"id": "bd3a74a8-7ccc-49ed-af3a-f33bcdc9ff26",
+				"method": "POST"
+			},
+			{
+				"id": "af05a17d-4374-41ef-9dc5-79a9fde73107",
+				"method": "POST"
+			},
+			{
+				"id": "810f1c05-0bb8-4b9b-8d43-e868b3102a42",
+				"method": "PUT"
+			},
+			{
+				"id": "2113e340-836a-4d28-a1c8-e68e02dd6d83",
+				"method": "DELETE"
+			},
+			{
+				"id": "f8a8367c-f155-4c4c-94c2-028ec1741769",
+				"method": "POST"
+			}
+		]
+	}
+}
