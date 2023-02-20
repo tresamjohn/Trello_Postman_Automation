@@ -5,6 +5,9 @@ Files includes the Postman collection for Trello REST Api. Collection saved in v
 #Install:
 
 Download the collection file and save it on your computer.
+
 Download the Environment Variable file and save it on your computer.
+
 Import the files in Postman
+
 Execute the Collection - 'Run Collection'
