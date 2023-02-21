@@ -16,7 +16,22 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);\r",
-									"pm.environment.set(\"board_id\", jsonData.id);"
+									"pm.environment.set(\"board_id\", jsonData.id);\r",
+									"\r",
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const boardName = pm.environment.get(\"boardName\");\r",
+									"    pm.expect(responseJson.name).to.eql(boardName);\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.idOrganization).not.equal(null);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -206,6 +221,13 @@
 								"exec": [
 									"var data = JSON.parse(responseBody);   \r",
 									"pm.environment.set(\"idList\", data[0].id);\r",
+									"\r",
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -354,7 +376,22 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);\r",
-									"pm.environment.set(\"card_id_01\", jsonData.id);"
+									"pm.environment.set(\"card_id_01\", jsonData.id);\r",
+									"\r",
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const cardName_01 = pm.environment.get(\"card_name_01\");\r",
+									"    pm.expect(responseJson.name).to.eql(cardName_01);\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.badges).not.equal(null);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -558,7 +595,22 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);\r",
-									"pm.environment.set(\"card_id_02\", jsonData.id);"
+									"pm.environment.set(\"card_id_02\", jsonData.id);\r",
+									"\r",
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const cardName_02 = pm.environment.get(\"card_name_02\");\r",
+									"    pm.expect(responseJson.name).to.eql(cardName_02);\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.badges).not.equal(null);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -752,7 +804,8 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.get(\"idList\");"
+									"pm.environment.get(\"idList\");\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -762,7 +815,22 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);\r",
-									"pm.environment.set(\"card_id_03\", jsonData.id);"
+									"pm.environment.set(\"card_id_03\", jsonData.id);\r",
+									"\r",
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const cardName_03 = pm.environment.get(\"card_name_03\");\r",
+									"    pm.expect(responseJson.name).to.eql(cardName_03);\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.badges).not.equal(null);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -957,6 +1025,34 @@
 							"script": {
 								"exec": [
 									"pm.environment.get(\"card_id_01\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.idBoard).not.equal(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that user is able to edit and update the card successfully\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const descValue = pm.environment.get(\"card_desc\");\r",
+									"    pm.expect(responseJson.desc).to.eql(descValue);\r",
+									"    const name = pm.environment.get(\"card_name_01_Updated\");\r",
+									"    pm.expect(responseJson.name).to.eql(name);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1164,6 +1260,31 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.idBoard).not.equal(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that user is able to delete the card successfully\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.limits).not.equal(null);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1258,6 +1379,32 @@
 								"exec": [
 									"\r",
 									"pm.environment.get(\"card_id_02\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Verify status code\r",
+									"pm.test(\"Verify that Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Verify the response properties\r",
+									"pm.test(\"Verify that the response has all properties\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.id).not.equal(null);\r",
+									"    pm.expect(responseJson.idBoard).not.equal(null);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verify that user is able to add a comment to the card successfully\", () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const commentText = pm.environment.get(\"card_comment\");\r",
+									"    pm.expect(responseJson.data.text).to.eql(commentText);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
